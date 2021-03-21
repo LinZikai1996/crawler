@@ -1,0 +1,44 @@
+1、爬虫的概念
+   模拟浏览器，发送请求，获取响应
+2、爬虫作用
+   数据采集、软件测试、抢票、网站投票、短息轰炸
+3、爬虫分类
+   ①网站数量
+       通用爬虫（搜索引擎），聚焦爬虫
+   ②目的
+       功能性爬虫（投票，点赞），数据增量爬虫
+4、爬虫流程
+   url => 发请求 => 获取响应 => 解析 ... （循环）
+5、http和https的概念
+    http：超文本，明文；https：http + SSL(安全套接字)加密
+6、请求头和响应头
+    请求头
+        Host:域名
+        Connection:长连接
+        upgrade-Insecure-Requests:(升级为https请求)
+        User-Agent:用户信息(提供系统和浏览器信息)
+        Referer:页面跳转处(防盗链)
+        Cookie:保持状态
+    响应头
+        Set-Cookie
+7、requests模块
+    调用get方法，对目标发送请求
+8、response
+    ①response基本操作
+        response.encoding: 查看编码类型和设置编码类型
+        response.text: 类型str, 解码类型是response模块自动根据HTTP头部响应的编码做出的有根据的推测
+        response.content: 类型bytes, 没有指定解码类型(推荐)
+            response.content.decode()
+    ②通过对response.content.decode()进行设置，来解决中文乱码问题
+        默认'utf8'
+            response.content.decode()
+        或者设置一下
+            response.content.decode('GBK')
+        常见字符集: utf8\gbk\gb2312\ascii\iso-8859-1
+    ③response的其他属性和方法
+        response.url: url重定向时候可以使用
+        response.status_code: 状态码
+        response.request.headers: 这个响应对应的请求头
+        response.headers: 响应头
+        response.cookies: cookies对象
+
