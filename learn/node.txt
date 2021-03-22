@@ -50,6 +50,28 @@
         b.创建参数字典
             发送请求设置参数字典
     ③在headers中携带cookies
+        requests.get(url, headers=headers)
     ④使用cookies参数保持会话
         构建cookies字典
         再次请求时候，将字典赋值给cookies参数
+            requests.get(url, headers=headers, cookies=cookies)
+10、超时参数
+    requests.get(url, timeout=3)
+    基本后续使用都要设置timeout
+11、代理
+    ①什么是代理
+        代理ip是一个ip，指向一个代理服务器，作用是帮我们向指定的目标服务器转发请求
+    ②正向代理和反向代理
+        知不知道服务器的的地址作为判断标准，知道是正向代理，不知道是反向代理
+    ③代理ip的分类
+        a.匿名度（对于目标服务器而言）
+            透明代理
+            匿名代理
+            高逆代理（推荐）
+        b.协议
+            HTTP
+            HTTPS
+            socks（少）
+    ④使用代理
+        使用成功不会有任何报错，能成功响应
+        失败，要么卡滞，要么报错
