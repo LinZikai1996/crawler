@@ -41,4 +41,15 @@
         response.request.headers: 这个响应对应的请求头
         response.headers: 响应头
         response.cookies: cookies对象
-
+9、requests模块
+    ①发送带请求头的请求
+        requests.get(url, headers={})
+    ②发送请求中带着参数
+        a.url里直接带参数
+            url = 'https://www.baidu.com/s?wd=python'
+        b.创建参数字典
+            发送请求设置参数字典
+    ③在headers中携带cookies
+    ④使用cookies参数保持会话
+        构建cookies字典
+        再次请求时候，将字典赋值给cookies参数
