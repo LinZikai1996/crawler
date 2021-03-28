@@ -75,3 +75,23 @@
     ④使用代理
         使用成功不会有任何报错，能成功响应
         失败，要么卡滞，要么报错
+12、verify
+    忽略CA证书
+    requests.get(url, verify=False)
+13、requests模块发送post请求
+    ①实现方法
+        requests.post(url, headers, data)
+    ②post来源
+        a.固定值:抓包比较不变值
+        b.输入值:抓包比较
+        c.预设值 - 静态文件:需要提前从html获取
+        d.预设值 - 发送请求:需要对指定值地址发送请求
+        e.浏览器生成:分析js
+14、requests中session
+    ①作用
+        自动处理cookie
+    ②场景
+        连续多次请求
+    ③使用
+         session = requests.session()
+         response = session.get(url...)
