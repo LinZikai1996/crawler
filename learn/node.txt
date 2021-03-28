@@ -1,97 +1,10 @@
-1、爬虫的概念
-   模拟浏览器，发送请求，获取响应
-2、爬虫作用
-   数据采集、软件测试、抢票、网站投票、短息轰炸
-3、爬虫分类
-   ①网站数量
-       通用爬虫（搜索引擎），聚焦爬虫
-   ②目的
-       功能性爬虫（投票，点赞），数据增量爬虫
-4、爬虫流程
-   url => 发请求 => 获取响应 => 解析 ... （循环）
-5、http和https的概念
-    http：超文本，明文；https：http + SSL(安全套接字)加密
-6、请求头和响应头
-    请求头
-        Host:域名
-        Connection:长连接
-        upgrade-Insecure-Requests:(升级为https请求)
-        User-Agent:用户信息(提供系统和浏览器信息)
-        Referer:页面跳转处(防盗链)
-        Cookie:保持状态
-    响应头
-        Set-Cookie
-7、requests模块
-    调用get方法，对目标发送请求
-8、response
-    ①response基本操作
-        response.encoding: 查看编码类型和设置编码类型
-        response.text: 类型str, 解码类型是response模块自动根据HTTP头部响应的编码做出的有根据的推测
-        response.content: 类型bytes, 没有指定解码类型(推荐)
-            response.content.decode()
-    ②通过对response.content.decode()进行设置，来解决中文乱码问题
-        默认'utf8'
-            response.content.decode()
-        或者设置一下
-            response.content.decode('GBK')
-        常见字符集: utf8\gbk\gb2312\ascii\iso-8859-1
-    ③response的其他属性和方法
-        response.url: url重定向时候可以使用
-        response.status_code: 状态码
-        response.request.headers: 这个响应对应的请求头
-        response.headers: 响应头
-        response.cookies: cookies对象
-9、requests模块
-    ①发送带请求头的请求
-        requests.get(url, headers={})
-    ②发送请求中带着参数
-        a.url里直接带参数
-            url = 'https://www.baidu.com/s?wd=python'
-        b.创建参数字典
-            发送请求设置参数字典
-    ③在headers中携带cookies
-        requests.get(url, headers=headers)
-    ④使用cookies参数保持会话
-        构建cookies字典
-        再次请求时候，将字典赋值给cookies参数
-            requests.get(url, headers=headers, cookies=cookies)
-10、超时参数
-    requests.get(url, timeout=3)
-    基本后续使用都要设置timeout
-11、代理
-    ①什么是代理
-        代理ip是一个ip，指向一个代理服务器，作用是帮我们向指定的目标服务器转发请求
-    ②正向代理和反向代理
-        知不知道服务器的的地址作为判断标准，知道是正向代理，不知道是反向代理
-    ③代理ip的分类
-        a.匿名度（对于目标服务器而言）
-            透明代理
-            匿名代理
-            高逆代理（推荐）
-        b.协议
-            HTTP
-            HTTPS
-            socks（少）
-    ④使用代理
-        使用成功不会有任何报错，能成功响应
-        失败，要么卡滞，要么报错
-12、verify
-    忽略CA证书
-    requests.get(url, verify=False)
-13、requests模块发送post请求
-    ①实现方法
-        requests.post(url, headers, data)
-    ②post来源
-        a.固定值:抓包比较不变值
-        b.输入值:抓包比较
-        c.预设值 - 静态文件:需要提前从html获取
-        d.预设值 - 发送请求:需要对指定值地址发送请求
-        e.浏览器生成:分析js
-14、requests中session
-    ①作用
-        自动处理cookie
-    ②场景
-        连续多次请求
-    ③使用
-         session = requests.session()
-         response = session.get(url...)
+数据提取提取
+1.响应内容分类
+    ①结构化
+        json数据（高）
+            json模块、re模块、json path模块取数据
+        xml数据
+            re模块、lxml模块取数据取数据
+    ②非结构化
+        html文件
+            re模块、lxml模块取数据取数据
